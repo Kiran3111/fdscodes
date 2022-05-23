@@ -3,7 +3,7 @@ using namespace std;
 
 const int SIZE = 10; //size of the hash table
 
-int hashFunc(int key,int arr[]);
+int hashFunc(int key);
 int search(int key,int arr[]);
 int del(int key,int arr[]);
 void insert(int key,int arr[]);
@@ -32,7 +32,7 @@ int main()
 }
 
 //hash function
-int hashFunc(int key,int arr[])
+int hashFunc(int key)
 {
     return key%SIZE;
 }
@@ -41,16 +41,17 @@ int hashFunc(int key,int arr[])
 //search operation
 int search(int key,int arr[])
 {
-    if(arr[key]==key)
+    int hashInd = hashFunc(key);
+    if(arr[hashInd]==key)
     {
-        return arr[key];
+        return 1;
     }
     else{
-        for(int i = key+1;i<SIZE;i++)
+        for(int i = hashInd+1;i<SIZE;i++)
         {
             if(arr[i]==key)
             {
-                return arr[i];
+                return 1;
             }
         }
         return -1;
@@ -61,13 +62,14 @@ int search(int key,int arr[])
 //delete operation
 int del(int key,int arr[])
 {
-    if(arr[key]==key)
+    int hashInd = hashFunc(key);
+    if(arr[hashInd]==key)
     {
-        arr[key] = 0;
+        arr[hashInd] = 0;
         return 1;
     }
     else{
-        for(int i = key+1;i<SIZE;i++)
+        for(int i = hashInd+1;i<SIZE;i++)
         {
             if(arr[i]==key)
             {
@@ -83,17 +85,20 @@ int del(int key,int arr[])
 //insert operation
 void insert(int key,int arr[])
 {
-    if(arr[key]==0)
+    int hashInd = hashFunc(key);
+    if(arr[hashInd]==0)
     {
-        arr[key] = key;
+        arr[hashInd] = key;
+        cout<<"Key Inserted : "<<key<<endl;
         return;
     }
     else{
-        for(int i = key+1;i<SIZE;i++)
+        for(int i = hashInd+1;i<SIZE;i++)
         {
             if(arr[i]==0)
             {
                 arr[i] = key;
+                cout<<"Key Inserted : "<<key<<endl;
                 return;
             }
         }
