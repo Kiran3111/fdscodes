@@ -5,6 +5,11 @@ void swap(int *a,int *b);
 void heapify(vector<int> &hT,int i);
 void insert(vector<int> &ht,int newNum);
 
+/*
+Heap is a special case of binary tree data structure where the root-node key is compared with
+its children and arranged accordingly.
+*/
+
 int main()
 {
     vector<int> heapTree;
@@ -21,6 +26,13 @@ int main()
     cout<<"Max Marks Obtained are : "<<heapTree[0]<<"\n";
     cout<<"Min Marks Obtained are : "<<heapTree[size-1]<<"\n";
 }
+
+/*
+There are two types of heap data structure i.e. min heap and max heap based on the comparison 
+of the values of parent and child.
+Min Heap - root node < child node; diagram
+Max Heap - root node > child node; diagram
+*/
 
 void swap(int *a, int *b)
 {
@@ -49,6 +61,15 @@ void heapify(vector<int> &hT, int i)
         heapify(hT, largest);
     }
 }
+
+/*
+Max Heap Construction Algorithm
+s1 - Create a new node at the end of the heap.
+s2 - Assign new value to the node
+s3 - Compare its value with the parent
+s4 - If value is greater than parent then swap
+s5 - repeat s3 and s4 until heap property is maintained 
+*/
 
 
 void insert(vector<int> &hT, int newNum)
