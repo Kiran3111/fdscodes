@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool checkGraph(int matrix[][5],int n);
-
 int main()
 {
 	int n = 5, m;
