@@ -44,14 +44,14 @@ int search(int key,int arr[])
     int hashInd = hashFunc(key);
     if(arr[hashInd]==key)
     {
-        return 1;
+        return key;
     }
     else{
         for(int i = hashInd+1;i<SIZE;i++)
         {
             if(arr[i]==key)
             {
-                return 1;
+                return key;
             }
         }
         return -1;
